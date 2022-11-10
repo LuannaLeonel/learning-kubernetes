@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  server:
+          image: luannaleonel/server-img
+          ports: 
+                - "8000:5001"
+          volumes:
+                  - ./users.json:/dummy-server/users.json
+  client:
+          depends_on: 
+                - server
+          image: luannaleonel/client-img
+          environment: 
+                 SERVER_ADDRESS: http://server
+                 USER_ID: 3 
+   
